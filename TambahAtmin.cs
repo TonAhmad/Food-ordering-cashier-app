@@ -37,6 +37,7 @@ namespace MyMakan
             adm.password_hash = txpw.Text;
             adm.phone_number = txphone.Text;
             adm.address = txaddress.Text;
+            adm.role = cbrole.Text;
             adm.Create();
         }
 

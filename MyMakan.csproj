@@ -54,6 +54,7 @@
       <DependentUpon>AtminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Barang.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="LoginAtmin.cs">
       <SubType>Form</SubType>
     </Compile>

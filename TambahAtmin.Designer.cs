@@ -41,6 +41,8 @@
             this.txaddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbrole = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txuname
@@ -163,11 +165,35 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Address";
             // 
+            // cbrole
+            // 
+            this.cbrole.FormattingEnabled = true;
+            this.cbrole.Items.AddRange(new object[] {
+            "admin",
+            "cashier"});
+            this.cbrole.Location = new System.Drawing.Point(103, 407);
+            this.cbrole.Name = "cbrole";
+            this.cbrole.Size = new System.Drawing.Size(121, 24);
+            this.cbrole.TabIndex = 13;
+            this.cbrole.Text = "Role";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(98, 368);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 25);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Role";
+            // 
             // TambahAtmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 570);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cbrole);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txaddress);
@@ -205,5 +231,7 @@
         private System.Windows.Forms.TextBox txaddress;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbrole;
+        private System.Windows.Forms.Label label7;
     }
 }

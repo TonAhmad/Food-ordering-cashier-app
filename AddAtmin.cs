@@ -17,6 +17,7 @@ namespace MyMakan
         public string password_hash;
         public string phone_number;
         public string address;
+        public string role;
 
         Koneksi koneksi = new Koneksi();
 
@@ -81,13 +82,14 @@ namespace MyMakan
                     return;
                 }
 
-                string query = "INSERT INTO Adm.Admin (username, email, password_hash, phone_number, address) VALUES (@username, @email, @pw, @phone, @address)";
+                string query = "INSERT INTO Adm.Admin (username, email, password_hash, phone_number, address, role) VALUES (@username, @email, @pw, @phone, @address, @role)";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@pw", password_hash);
                 cmd.Parameters.AddWithValue("@phone", phone_number);
                 cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@role", role.ToLower());
 
                 int i = cmd.ExecuteNonQuery();
                 if (i != 0)
