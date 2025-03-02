@@ -54,7 +54,14 @@
       <DependentUpon>AtminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Barang.cs" />
+    <Compile Include="CashierPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashierPage.Designer.cs">
+      <DependentUpon>CashierPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="LoginAtmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +79,9 @@
     </Compile>
     <EmbeddedResource Include="AtminDashboard.resx">
       <DependentUpon>AtminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierPage.resx">
+      <DependentUpon>CashierPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginAtmin.resx">
       <DependentUpon>LoginAtmin.cs</DependentUpon>

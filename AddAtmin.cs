@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace MyMakan
 {
@@ -23,7 +24,6 @@ namespace MyMakan
 
         public bool ValidateForm()
         {
-
             if (string.IsNullOrWhiteSpace(username) || username.Length < 3 || username.Contains(" "))
             {
                 MessageBox.Show("Username harus minimal 3 karakter dan tidak boleh mengandung spasi!", "Validasi Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -59,6 +59,22 @@ namespace MyMakan
 
             return true;
         }
+
+        public static string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
+
         public void Create()
         {
             if (!ValidateForm())
@@ -82,11 +98,13 @@ namespace MyMakan
                     return;
                 }
 
+                string hashedPassword = HashPassword(password_hash);
+
                 string query = "INSERT INTO Adm.Admin (username, email, password_hash, phone_number, address, role) VALUES (@username, @email, @pw, @phone, @address, @role)";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@pw", password_hash);
+                cmd.Parameters.AddWithValue("@pw", hashedPassword);
                 cmd.Parameters.AddWithValue("@phone", phone_number);
                 cmd.Parameters.AddWithValue("@address", address);
                 cmd.Parameters.AddWithValue("@role", role.ToLower());
@@ -94,11 +112,11 @@ namespace MyMakan
                 int i = cmd.ExecuteNonQuery();
                 if (i != 0)
                 {
-                    MessageBox.Show("Data Saved", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Data berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Data Not Saved", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Data gagal disimpan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException sqle)

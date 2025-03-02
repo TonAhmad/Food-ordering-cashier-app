@@ -11,6 +11,7 @@ namespace MyMakan
 {
     internal class Barang
     {
+        public string productID;
         public string productName;
         public string categoryID;
         public decimal price;
@@ -100,6 +101,70 @@ namespace MyMakan
                 MessageBox.Show(ex.Message);
             }
             return ds;
+        }
+
+        public void Update()
+        {
+            if (!ValidateForm())
+            {
+                return;
+            }
+            try
+            {
+                koneksi.bukaKoneksi();
+                string query = "UPDATE item.Product SET productName = @name, categoryID = @category, price = @price, stock = @stock WHERE productID = @id";
+                SqlCommand cmd = new SqlCommand(query, koneksi.con);
+                cmd.Parameters.AddWithValue("@id", productID);
+                cmd.Parameters.AddWithValue("@name", productName);
+                cmd.Parameters.AddWithValue("@category", categoryID);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                int i = cmd.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    MessageBox.Show("Produk berhasil diubah!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengubah produk!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Kesalahan Database: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                koneksi.tutupKoneksi();
+            }
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                koneksi.bukaKoneksi();
+                string query = "DELETE FROM item.Product WHERE productID = @id";
+                SqlCommand cmd = new SqlCommand(query, koneksi.con);
+                cmd.Parameters.AddWithValue("@id", productID);
+                int i = cmd.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    MessageBox.Show("Produk berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menghapus produk!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Kesalahan Database: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                koneksi.tutupKoneksi();
+            }
         }
     }
 }

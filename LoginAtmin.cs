@@ -26,5 +26,41 @@ namespace MyMakan
         {
 
         }
+
+        private void btlogin_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            string roleFromDB;
+
+            if (comboBoxRole.SelectedItem == null)
+            {
+                MessageBox.Show("Silakan pilih peran!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string selectedRole = comboBoxRole.SelectedItem.ToString().ToLower(); // Ambil role dari ComboBox
+
+            if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB))
+            {
+                MessageBox.Show("Login berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (roleFromDB == "admin")
+                {
+                    AtminDashboard dashboard = new AtminDashboard();
+                    dashboard.Show();
+                }
+                else if (roleFromDB == "cashier")
+                {
+                    CashierPage cashierPage = new CashierPage();
+                    cashierPage.Show();
+                }
+
+                this.Hide(); // Menyembunyikan form login setelah berhasil
+            }
+            else
+            {
+                MessageBox.Show("Username, password, atau peran salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
