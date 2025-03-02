@@ -12,9 +12,16 @@ namespace MyMakan
 {
     public partial class CashierPage : Form
     {
-        public CashierPage()
+        string cashierName;
+        public CashierPage(string name)
         {
             InitializeComponent();
+            cashierName = name;
+        }
+
+        private void CashierPage_Load(object sender, EventArgs e)
+        {
+            lblname.Text = "Welcome, " + cashierName + "!";
         }
     }
 }

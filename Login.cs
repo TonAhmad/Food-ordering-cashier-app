@@ -28,15 +28,17 @@ namespace MyMakan
             }
         }
 
-        public bool Authenticate(string username, string password, string selectedRole, out string roleFromDB)
+        public bool Authenticate(string username, string password, string selectedRole, out string roleFromDB, out string fullname)
         {
             roleFromDB = null;
+            fullname = null;
+
             try
             {
                 koneksi.bukaKoneksi();
 
-                // Query untuk mengambil hash password dan role berdasarkan username
-                string query = "SELECT password_hash, role FROM Adm.Admin WHERE username = @username";
+                // Query untuk mengambil password_hash, role, dan username (nama) dari database
+                string query = "SELECT password_hash, role, username FROM Adm.Admin WHERE username = @username";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
                 cmd.Parameters.AddWithValue("@username", username);
 
@@ -45,17 +47,17 @@ namespace MyMakan
                 if (reader.Read())
                 {
                     string storedHash = reader["password_hash"].ToString();
-                    roleFromDB = reader["role"].ToString().ToLower(); // Ambil role dari database
-
+                    roleFromDB = reader["role"].ToString().ToLower(); // Ambil role
+                    fullname = reader["username"].ToString(); // Ambil nama user
                     reader.Close();
 
-                    // Cek apakah peran yang dipilih di ComboBox sesuai dengan yang ada di database
+                    // Cek apakah role yang dipilih sesuai dengan yang ada di database
                     if (roleFromDB != selectedRole)
                     {
                         return false; // Role tidak sesuai
                     }
 
-                    // Hash password input dan bandingkan dengan hash di database
+                    // Cek password dengan hashing
                     string hashedInput = HashPassword(password);
                     if (hashedInput == storedHash)
                     {
@@ -74,7 +76,5 @@ namespace MyMakan
 
             return false; // Login gagal
         }
-
-
     }
 }

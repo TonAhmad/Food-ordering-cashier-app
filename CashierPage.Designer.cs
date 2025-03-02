@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblname = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.IndianRed;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblname);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1133, 58);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // lblname
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cashier Name";
+            this.lblname.AutoSize = true;
+            this.lblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblname.Location = new System.Drawing.Point(12, 18);
+            this.lblname.Name = "lblname";
+            this.lblname.Size = new System.Drawing.Size(149, 25);
+            this.lblname.TabIndex = 0;
+            this.lblname.Text = "Cashier Name";
             // 
             // CashierPage
             // 
@@ -61,6 +61,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "CashierPage";
             this.Text = "CashierPage";
+            this.Load += new System.EventHandler(this.CashierPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -70,6 +71,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblname;
     }
 }

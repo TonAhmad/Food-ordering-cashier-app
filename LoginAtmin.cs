@@ -31,6 +31,7 @@ namespace MyMakan
         {
             Login login = new Login();
             string roleFromDB;
+            string fullname;
 
             if (comboBoxRole.SelectedItem == null)
             {
@@ -40,18 +41,18 @@ namespace MyMakan
 
             string selectedRole = comboBoxRole.SelectedItem.ToString().ToLower(); // Ambil role dari ComboBox
 
-            if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB))
+            if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB, out fullname))
             {
                 MessageBox.Show("Login berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (roleFromDB == "admin")
                 {
-                    AtminDashboard dashboard = new AtminDashboard();
+                    AtminDashboard dashboard = new AtminDashboard(fullname);
                     dashboard.Show();
                 }
                 else if (roleFromDB == "cashier")
                 {
-                    CashierPage cashierPage = new CashierPage();
+                    CashierPage cashierPage = new CashierPage(fullname);
                     cashierPage.Show();
                 }
 

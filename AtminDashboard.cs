@@ -14,13 +14,18 @@ namespace MyMakan
     public partial class AtminDashboard : Form
     {
         Koneksi koneksi = new Koneksi();
-        public AtminDashboard()
+
+        string adminName;
+
+        public AtminDashboard(string name)
         {
             InitializeComponent();
+            adminName = name;
         }
 
         private void AtminDashboard_Load(object sender, EventArgs e)
         {
+            lblname.Text = "Welcome, " + adminName + "!";
             LoadData();
             LoadCategory();
             LoadProduct();
