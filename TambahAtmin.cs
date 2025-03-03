@@ -39,7 +39,19 @@ namespace MyMakan
             adm.address = txaddress.Text;
             adm.role = cbrole.Text;
             adm.Create();
+            Cleardata();
         }
+
+        void Cleardata()
+        {
+            txuname.Text = "";
+            txemail.Text = "";
+            txpw.Text = "";
+            txphone.Text = "";
+            txaddress.Text = "";
+            cbrole.Text = "";
+        }
+
 
         private void TambahAtmin_Load(object sender, EventArgs e)
         {

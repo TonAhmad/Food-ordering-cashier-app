@@ -17,7 +17,7 @@ namespace MyMakan
         {
             try
             {
-                source = "Integrated Security=true;Initial Catalog=db_makan;Data Source=.";
+                source = "Integrated Security=true;Initial Catalog=db_m akan;Data Source=.";
                 con = new SqlConnection(source);
             }
             catch (SqlException sqle)

@@ -23,7 +23,6 @@ namespace MyMakan
                 return false;
             }
 
-            // Cek apakah kategori sudah ada di database
             try
             {
                 koneksi.bukaKoneksi();

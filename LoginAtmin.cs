@@ -39,7 +39,7 @@ namespace MyMakan
                 return;
             }
 
-            string selectedRole = comboBoxRole.SelectedItem.ToString().ToLower(); // Ambil role dari ComboBox
+            string selectedRole = comboBoxRole.SelectedItem.ToString().ToLower();
 
             if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB, out fullname))
             {
@@ -56,12 +56,18 @@ namespace MyMakan
                     cashierPage.Show();
                 }
 
-                this.Hide(); // Menyembunyikan form login setelah berhasil
+                this.Hide();
             }
             else
             {
                 MessageBox.Show("Username, password, atau peran salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btaddacc_Click(object sender, EventArgs e)
+        {
+            TambahAtmin tambah = new TambahAtmin();
+            tambah.Show();
         }
     }
 }

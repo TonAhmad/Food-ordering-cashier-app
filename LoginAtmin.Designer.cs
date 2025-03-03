@@ -36,6 +36,7 @@
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btlogin = new System.Windows.Forms.Button();
+            this.btaddacc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -115,11 +116,22 @@
             this.btlogin.UseVisualStyleBackColor = true;
             this.btlogin.Click += new System.EventHandler(this.btlogin_Click);
             // 
+            // btaddacc
+            // 
+            this.btaddacc.Location = new System.Drawing.Point(771, 542);
+            this.btaddacc.Name = "btaddacc";
+            this.btaddacc.Size = new System.Drawing.Size(122, 31);
+            this.btaddacc.TabIndex = 8;
+            this.btaddacc.Text = "Create Account";
+            this.btaddacc.UseVisualStyleBackColor = true;
+            this.btaddacc.Click += new System.EventHandler(this.btaddacc_Click);
+            // 
             // LoginAtmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 585);
+            this.Controls.Add(this.btaddacc);
             this.Controls.Add(this.btlogin);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxRole);
@@ -147,6 +159,7 @@
         private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btlogin;
+        private System.Windows.Forms.Button btaddacc;
     }
 }
 

@@ -33,7 +33,7 @@ namespace MyMakan
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, emailPattern))
             {
-                MessageBox.Show("Email tidak valid!", "Validasi Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email tidak valid! harus menggunakan @ dan .", "Validasi Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

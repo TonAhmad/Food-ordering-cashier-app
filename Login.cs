@@ -13,7 +13,6 @@ namespace MyMakan
     {
         Koneksi koneksi = new Koneksi();
 
-        // Method untuk melakukan hashing password dengan SHA-256
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -37,7 +36,6 @@ namespace MyMakan
             {
                 koneksi.bukaKoneksi();
 
-                // Query untuk mengambil password_hash, role, dan username (nama) dari database
                 string query = "SELECT password_hash, role, username FROM Adm.Admin WHERE username = @username";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
                 cmd.Parameters.AddWithValue("@username", username);
@@ -47,21 +45,19 @@ namespace MyMakan
                 if (reader.Read())
                 {
                     string storedHash = reader["password_hash"].ToString();
-                    roleFromDB = reader["role"].ToString().ToLower(); // Ambil role
-                    fullname = reader["username"].ToString(); // Ambil nama user
+                    roleFromDB = reader["role"].ToString().ToLower();
+                    fullname = reader["username"].ToString();
                     reader.Close();
 
-                    // Cek apakah role yang dipilih sesuai dengan yang ada di database
                     if (roleFromDB != selectedRole)
                     {
-                        return false; // Role tidak sesuai
+                        return false;
                     }
 
-                    // Cek password dengan hashing
                     string hashedInput = HashPassword(password);
                     if (hashedInput == storedHash)
                     {
-                        return true; // Login berhasil
+                        return true;
                     }
                 }
             }
@@ -74,7 +70,7 @@ namespace MyMakan
                 koneksi.tutupKoneksi();
             }
 
-            return false; // Login gagal
+            return false;
         }
     }
 }
