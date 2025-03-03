@@ -28,14 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.transID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgtransaksi = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,77 +47,22 @@
             this.btcari = new System.Windows.Forms.Button();
             this.txnama2 = new System.Windows.Forms.TextBox();
             this.txharga = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txsubtotal = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtransaksi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuharga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nujumlah)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgtransaksi
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.transID,
-            this.productID,
-            this.categoryID,
-            this.productName,
-            this.price,
-            this.quantity,
-            this.subtotal});
-            this.dataGridView1.Location = new System.Drawing.Point(54, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(966, 293);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // transID
-            // 
-            this.transID.HeaderText = "transID";
-            this.transID.MinimumWidth = 6;
-            this.transID.Name = "transID";
-            this.transID.Width = 125;
-            // 
-            // productID
-            // 
-            this.productID.HeaderText = "productID";
-            this.productID.MinimumWidth = 6;
-            this.productID.Name = "productID";
-            this.productID.Width = 125;
-            // 
-            // categoryID
-            // 
-            this.categoryID.HeaderText = "categoryID";
-            this.categoryID.MinimumWidth = 6;
-            this.categoryID.Name = "categoryID";
-            this.categoryID.Width = 125;
-            // 
-            // productName
-            // 
-            this.productName.HeaderText = "productName";
-            this.productName.MinimumWidth = 6;
-            this.productName.Name = "productName";
-            this.productName.Width = 125;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "quantity";
-            this.quantity.MinimumWidth = 6;
-            this.quantity.Name = "quantity";
-            this.quantity.Width = 125;
-            // 
-            // subtotal
-            // 
-            this.subtotal.HeaderText = "subtotal";
-            this.subtotal.MinimumWidth = 6;
-            this.subtotal.Name = "subtotal";
-            this.subtotal.Width = 125;
+            this.dgtransaksi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtransaksi.Location = new System.Drawing.Point(54, 32);
+            this.dgtransaksi.Name = "dgtransaksi";
+            this.dgtransaksi.RowHeadersWidth = 51;
+            this.dgtransaksi.RowTemplate.Height = 24;
+            this.dgtransaksi.Size = new System.Drawing.Size(966, 293);
+            this.dgtransaksi.TabIndex = 0;
+            this.dgtransaksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtransaksi_CellContentClick);
             // 
             // label1
             // 
@@ -178,6 +116,7 @@
             this.txnama.Name = "txnama";
             this.txnama.Size = new System.Drawing.Size(208, 22);
             this.txnama.TabIndex = 6;
+            this.txnama.TextChanged += new System.EventHandler(this.txnama_TextChanged);
             // 
             // nuharga
             // 
@@ -185,6 +124,7 @@
             this.nuharga.Name = "nuharga";
             this.nuharga.Size = new System.Drawing.Size(208, 22);
             this.nuharga.TabIndex = 8;
+            this.nuharga.ValueChanged += new System.EventHandler(this.nuharga_ValueChanged);
             // 
             // nujumlah
             // 
@@ -276,11 +216,19 @@
             this.txharga.Size = new System.Drawing.Size(208, 22);
             this.txharga.TabIndex = 24;
             // 
+            // txsubtotal
+            // 
+            this.txsubtotal.Location = new System.Drawing.Point(388, 436);
+            this.txsubtotal.Name = "txsubtotal";
+            this.txsubtotal.Size = new System.Drawing.Size(208, 22);
+            this.txsubtotal.TabIndex = 25;
+            // 
             // FormTransaksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1251, 630);
+            this.Controls.Add(this.txsubtotal);
             this.Controls.Add(this.txharga);
             this.Controls.Add(this.txnama2);
             this.Controls.Add(this.btcari);
@@ -299,11 +247,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgtransaksi);
             this.Name = "FormTransaksi";
             this.Text = "FormTransaksi";
             this.Load += new System.EventHandler(this.FormTransaksi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtransaksi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nuharga)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nujumlah)).EndInit();
             this.ResumeLayout(false);
@@ -313,7 +261,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtransaksi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -330,14 +278,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btcari;
-        private System.Windows.Forms.DataGridViewTextBoxColumn transID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.TextBox txnama2;
         private System.Windows.Forms.TextBox txharga;
+        private System.Windows.Forms.TextBox txsubtotal;
     }
 }
