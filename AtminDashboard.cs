@@ -191,5 +191,10 @@ namespace MyMakan
             ClearData();
             LoadCategory();
         }
+
+        private void txPname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

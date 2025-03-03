@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -165,6 +166,31 @@ namespace MyMakan
             {
                 koneksi.tutupKoneksi();
             }
+
+            public ArrayList Cari()
+            {
+                ArrayList item = new ArrayList();
+                try
+                {
+                    koneksi.bukaKoneksi();
+                    string query = "select productName, CONVERT(INT,ItemPrice) from Products.Item WHERE ItemCode = @kode";
+                    SqlCommand com = new SqlCommand(query, koneksi.con);
+                    com.Parameters.AddWithValue("@kode", productID);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        item.Add(dr[0].ToString());
+                        item.Add(dr[1].ToString());
+                    }
+                    dr.Close();
+                    koneksi.tutupKoneksi();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return item;
+
+            }
         }
-    }
 }

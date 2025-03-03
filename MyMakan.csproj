@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,6 +61,13 @@
       <DependentUpon>CashierPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
+    <Compile Include="FormTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransaksi.Designer.cs">
+      <DependentUpon>FormTransaksi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVariable.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAtmin.cs">
       <SubType>Form</SubType>
@@ -77,11 +84,15 @@
     <Compile Include="TambahAtmin.Designer.cs">
       <DependentUpon>TambahAtmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransHeader.cs" />
     <EmbeddedResource Include="AtminDashboard.resx">
       <DependentUpon>AtminDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierPage.resx">
       <DependentUpon>CashierPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransaksi.resx">
+      <DependentUpon>FormTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginAtmin.resx">
       <DependentUpon>LoginAtmin.cs</DependentUpon>

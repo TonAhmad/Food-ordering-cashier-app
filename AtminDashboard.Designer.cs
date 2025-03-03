@@ -154,6 +154,7 @@
             this.txPname.Name = "txPname";
             this.txPname.Size = new System.Drawing.Size(189, 30);
             this.txPname.TabIndex = 8;
+            this.txPname.TextChanged += new System.EventHandler(this.txPname_TextChanged);
             // 
             // comboBoxCategory
             // 
