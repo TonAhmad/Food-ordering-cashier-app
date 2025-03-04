@@ -166,31 +166,38 @@ namespace MyMakan
             {
                 koneksi.tutupKoneksi();
             }
-
-            public ArrayList Cari()
-            {
-                ArrayList item = new ArrayList();
-                try
-                {
-                    koneksi.bukaKoneksi();
-                    string query = "select productName, CONVERT(INT,ItemPrice) from Products.Item WHERE ItemCode = @kode";
-                    SqlCommand com = new SqlCommand(query, koneksi.con);
-                    com.Parameters.AddWithValue("@kode", productID);
-                    SqlDataReader dr = com.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        item.Add(dr[0].ToString());
-                        item.Add(dr[1].ToString());
-                    }
-                    dr.Close();
-                    koneksi.tutupKoneksi();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                return item;
-
-            }
         }
+        public ArrayList Cari(string namaProduk)
+        {
+            ArrayList item = new ArrayList();
+            try
+            {
+                koneksi.bukaKoneksi();
+                string query = "SELECT productID, productName, categoryID, price, stock FROM item.Product WHERE productName = @namaProduk";
+                SqlCommand com = new SqlCommand(query, koneksi.con);
+                com.Parameters.AddWithValue("@namaProduk", namaProduk);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    item.Add(dr["productID"].ToString());   // Menyimpan ID Produk
+                    item.Add(dr["productName"].ToString()); // Menyimpan Nama Produk
+                    item.Add(dr["categoryID"].ToString());  // Menyimpan ID Kategori
+                    item.Add(dr["price"].ToString());       // Menyimpan Harga
+                    item.Add(dr["stock"].ToString());       // Menyimpan Stok
+                }
+
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Pencarian Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                koneksi.tutupKoneksi();
+            }
+            return item;
+        }
+    }
 }

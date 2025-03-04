@@ -54,6 +54,7 @@
       <DependentUpon>AtminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Barang.cs" />
+    <Compile Include="TransDetail.cs" />
     <Compile Include="CashierPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,12 +62,6 @@
       <DependentUpon>CashierPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
-    <Compile Include="FormTransaksi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTransaksi.Designer.cs">
-      <DependentUpon>FormTransaksi.cs</DependentUpon>
-    </Compile>
     <Compile Include="GlobalVariable.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAtmin.cs">
@@ -90,9 +85,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CashierPage.resx">
       <DependentUpon>CashierPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTransaksi.resx">
-      <DependentUpon>FormTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginAtmin.resx">
       <DependentUpon>LoginAtmin.cs</DependentUpon>

@@ -12,35 +12,30 @@ namespace MyMakan
 {
     class TransHeader
     {
-        public string transID;
+        public int transID;
         public string admin_id;
-        public DateTime TransDate;
-        public int Total;
+        public decimal total;
 
         Koneksi koneksi = new Koneksi();
-
-        public void Create()
+        public void create()
         {
             try
             {
                 koneksi.bukaKoneksi();
-                string query = "INSERT INTO Transactions.TransHeader VALUES (@number, @kodeadmin, @tanggal, @total)";
+                string query = "INSERT INTO Transaction.TransHeader VALUES (@kode, @admin, @total)";
                 SqlCommand com = new SqlCommand(query, koneksi.con);
-                com.Parameters.AddWithValue("@number", transID);
-                com.Parameters.AddWithValue("@kodeadmin ", admin_id);
-                com.Parameters.AddWithValue("@tanggal", TransDate);
-                com.Parameters.AddWithValue("@total", Total);
+                com.Parameters.AddWithValue("@kode", transID);
+                com.Parameters.AddWithValue("@admin", admin_id);
+                com.Parameters.AddWithValue("@total", total);
                 int i = com.ExecuteNonQuery();
                 if (i > 0)
                 {
-                    MessageBox.Show("Data Berhasil Dimasukkan");
+                    MessageBox.Show("Data berhasil dimasukkan");
                 }
                 else
                 {
-                    MessageBox.Show("Data Gagal Dimasukkan");
-
+                    MessageBox.Show("Data gagal dimasukkan");
                 }
-
             }
             catch (Exception ex)
             {

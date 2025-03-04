@@ -16,7 +16,7 @@ namespace MyMakan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginAtmin());
+            Application.Run(new CashierPage());
         }
     }
 }
