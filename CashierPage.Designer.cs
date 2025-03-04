@@ -49,14 +49,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txstock = new System.Windows.Forms.TextBox();
             this.dgtransaksi = new System.Windows.Forms.DataGridView();
-            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btsubmit = new System.Windows.Forms.Button();
             this.txuangcst = new System.Windows.Forms.TextBox();
             this.txkembalian = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lbnama = new System.Windows.Forms.Label();
+            this.lbtanggal = new System.Windows.Forms.Label();
+            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btprint = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nujumlah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgitem)).BeginInit();
@@ -66,6 +70,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.IndianRed;
+            this.panel1.Controls.Add(this.lbtanggal);
+            this.panel1.Controls.Add(this.lbnama);
             this.panel1.Controls.Add(this.lblname);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -167,7 +173,7 @@
             // 
             // btco
             // 
-            this.btco.Location = new System.Drawing.Point(648, 765);
+            this.btco.Location = new System.Drawing.Point(498, 591);
             this.btco.Name = "btco";
             this.btco.Size = new System.Drawing.Size(326, 69);
             this.btco.TabIndex = 31;
@@ -256,38 +262,19 @@
             this.dgtransaksi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productID,
             this.ProductName,
+            this.Quantity,
             this.Totalprice});
             this.dgtransaksi.Location = new System.Drawing.Point(899, 396);
             this.dgtransaksi.Name = "dgtransaksi";
             this.dgtransaksi.RowHeadersWidth = 51;
             this.dgtransaksi.RowTemplate.Height = 24;
-            this.dgtransaksi.Size = new System.Drawing.Size(428, 319);
+            this.dgtransaksi.Size = new System.Drawing.Size(512, 319);
             this.dgtransaksi.TabIndex = 50;
-            // 
-            // productID
-            // 
-            this.productID.HeaderText = "Product ID";
-            this.productID.MinimumWidth = 6;
-            this.productID.Name = "productID";
-            this.productID.Width = 125;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.MinimumWidth = 6;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.Width = 125;
-            // 
-            // Totalprice
-            // 
-            this.Totalprice.HeaderText = "Total Price";
-            this.Totalprice.MinimumWidth = 6;
-            this.Totalprice.Name = "Totalprice";
-            this.Totalprice.Width = 125;
+            this.dgtransaksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtransaksi_CellContentClick_1);
             // 
             // btsubmit
             // 
-            this.btsubmit.Location = new System.Drawing.Point(211, 735);
+            this.btsubmit.Location = new System.Drawing.Point(209, 739);
             this.btsubmit.Name = "btsubmit";
             this.btsubmit.Size = new System.Drawing.Size(246, 76);
             this.btsubmit.TabIndex = 51;
@@ -331,11 +318,69 @@
             this.label8.TabIndex = 55;
             this.label8.Text = "Kembalian";
             // 
+            // lbnama
+            // 
+            this.lbnama.AutoSize = true;
+            this.lbnama.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbnama.Location = new System.Drawing.Point(167, 20);
+            this.lbnama.Name = "lbnama";
+            this.lbnama.Size = new System.Drawing.Size(0, 23);
+            this.lbnama.TabIndex = 1;
+            // 
+            // lbtanggal
+            // 
+            this.lbtanggal.AutoSize = true;
+            this.lbtanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtanggal.Location = new System.Drawing.Point(829, 18);
+            this.lbtanggal.Name = "lbtanggal";
+            this.lbtanggal.Size = new System.Drawing.Size(84, 25);
+            this.lbtanggal.TabIndex = 56;
+            this.lbtanggal.Text = "Tanggal";
+            // 
+            // productID
+            // 
+            this.productID.HeaderText = "Product ID";
+            this.productID.MinimumWidth = 6;
+            this.productID.Name = "productID";
+            this.productID.Width = 125;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.Width = 125;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 125;
+            // 
+            // Totalprice
+            // 
+            this.Totalprice.HeaderText = "Total Price";
+            this.Totalprice.MinimumWidth = 6;
+            this.Totalprice.Name = "Totalprice";
+            this.Totalprice.Width = 125;
+            // 
+            // btprint
+            // 
+            this.btprint.Location = new System.Drawing.Point(543, 739);
+            this.btprint.Name = "btprint";
+            this.btprint.Size = new System.Drawing.Size(246, 76);
+            this.btprint.TabIndex = 56;
+            this.btprint.Text = "Print Receipt";
+            this.btprint.UseVisualStyleBackColor = true;
+            this.btprint.Click += new System.EventHandler(this.btprint_Click);
+            // 
             // CashierPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1532, 902);
+            this.Controls.Add(this.btprint);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txkembalian);
@@ -399,13 +444,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txstock;
         private System.Windows.Forms.DataGridView dgtransaksi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Totalprice;
         private System.Windows.Forms.Button btsubmit;
         private System.Windows.Forms.TextBox txuangcst;
         private System.Windows.Forms.TextBox txkembalian;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbnama;
+        private System.Windows.Forms.Label lbtanggal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Totalprice;
+        private System.Windows.Forms.Button btprint;
     }
 }
