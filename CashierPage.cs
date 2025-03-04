@@ -92,5 +92,32 @@ namespace MyMakan
             row.Cells[2].Value = txsubtotal.Text;
             dgtransaksi.Rows.Add(row);
         }
+
+        private void btco_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ambil nilai total belanja dan uang customer dari TextBox
+                decimal totalBelanja = Convert.ToDecimal(txsubtotal.Text);
+                decimal uangCustomer = Convert.ToDecimal(txuangcst.Text);
+
+                // Pastikan uang customer cukup untuk membayar
+                if (uangCustomer < totalBelanja)
+                {
+                    MessageBox.Show("Uang yang diberikan tidak cukup!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Hitung kembalian
+                decimal kembalian = uangCustomer - totalBelanja;
+
+                // Tampilkan hasil di TextBox atau Label
+                txkembalian.Text = kembalian.ToString("N2"); // Format angka desimal 2 digit
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Masukkan angka yang valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -53,6 +53,10 @@
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btsubmit = new System.Windows.Forms.Button();
+            this.txuangcst = new System.Windows.Forms.TextBox();
+            this.txkembalian = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nujumlah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgitem)).BeginInit();
@@ -169,6 +173,7 @@
             this.btco.TabIndex = 31;
             this.btco.Text = "Check Out";
             this.btco.UseVisualStyleBackColor = true;
+            this.btco.Click += new System.EventHandler(this.btco_Click);
             // 
             // label4
             // 
@@ -252,7 +257,7 @@
             this.productID,
             this.ProductName,
             this.Totalprice});
-            this.dgtransaksi.Location = new System.Drawing.Point(648, 410);
+            this.dgtransaksi.Location = new System.Drawing.Point(899, 396);
             this.dgtransaksi.Name = "dgtransaksi";
             this.dgtransaksi.RowHeadersWidth = 51;
             this.dgtransaksi.RowTemplate.Height = 24;
@@ -282,7 +287,7 @@
             // 
             // btsubmit
             // 
-            this.btsubmit.Location = new System.Drawing.Point(221, 742);
+            this.btsubmit.Location = new System.Drawing.Point(211, 735);
             this.btsubmit.Name = "btsubmit";
             this.btsubmit.Size = new System.Drawing.Size(246, 76);
             this.btsubmit.TabIndex = 51;
@@ -290,11 +295,51 @@
             this.btsubmit.UseVisualStyleBackColor = true;
             this.btsubmit.Click += new System.EventHandler(this.btsubmit_Click);
             // 
+            // txuangcst
+            // 
+            this.txuangcst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txuangcst.Location = new System.Drawing.Point(606, 444);
+            this.txuangcst.Name = "txuangcst";
+            this.txuangcst.Size = new System.Drawing.Size(218, 30);
+            this.txuangcst.TabIndex = 52;
+            // 
+            // txkembalian
+            // 
+            this.txkembalian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txkembalian.Location = new System.Drawing.Point(606, 536);
+            this.txkembalian.Name = "txkembalian";
+            this.txkembalian.Size = new System.Drawing.Size(218, 30);
+            this.txkembalian.TabIndex = 53;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(601, 416);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 25);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Dibayar";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(601, 508);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 25);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Kembalian";
+            // 
             // CashierPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 892);
+            this.ClientSize = new System.Drawing.Size(1532, 902);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txkembalian);
+            this.Controls.Add(this.txuangcst);
             this.Controls.Add(this.btsubmit);
             this.Controls.Add(this.dgtransaksi);
             this.Controls.Add(this.txstock);
@@ -358,5 +403,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Totalprice;
         private System.Windows.Forms.Button btsubmit;
+        private System.Windows.Forms.TextBox txuangcst;
+        private System.Windows.Forms.TextBox txkembalian;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
