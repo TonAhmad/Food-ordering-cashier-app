@@ -59,7 +59,7 @@ namespace MyMakan
             menit = Convert.ToInt32(DateTime.Now.Minute.ToString());
             detik = Convert.ToInt32(DateTime.Now.Second.ToString());
             int hasil = (tanggal + bulan + tahun) * (jam + menit + detik);
-            no = GlobalVariable.kodeadmin.Substring(2) + hasil.ToString() + random.Next(100, 999);
+            no = GlobalVariable.kodeadmin + hasil.ToString() + random.Next(100, 999);
             return no;
         }
 

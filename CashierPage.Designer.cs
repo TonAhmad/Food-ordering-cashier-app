@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbtanggal = new System.Windows.Forms.Label();
+            this.lbnama = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
             this.txsubtotal = new System.Windows.Forms.TextBox();
             this.txname = new System.Windows.Forms.TextBox();
@@ -49,18 +51,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txstock = new System.Windows.Forms.TextBox();
             this.dgtransaksi = new System.Windows.Forms.DataGridView();
+            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btsubmit = new System.Windows.Forms.Button();
             this.txuangcst = new System.Windows.Forms.TextBox();
             this.txkembalian = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.lbnama = new System.Windows.Forms.Label();
-            this.lbtanggal = new System.Windows.Forms.Label();
-            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Totalprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btprint = new System.Windows.Forms.Button();
+            this.bttambah = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txgrandtotal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nujumlah)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgitem)).BeginInit();
@@ -79,6 +82,25 @@
             this.panel1.Size = new System.Drawing.Size(1532, 58);
             this.panel1.TabIndex = 0;
             // 
+            // lbtanggal
+            // 
+            this.lbtanggal.AutoSize = true;
+            this.lbtanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtanggal.Location = new System.Drawing.Point(829, 18);
+            this.lbtanggal.Name = "lbtanggal";
+            this.lbtanggal.Size = new System.Drawing.Size(84, 25);
+            this.lbtanggal.TabIndex = 56;
+            this.lbtanggal.Text = "Tanggal";
+            // 
+            // lbnama
+            // 
+            this.lbnama.AutoSize = true;
+            this.lbnama.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbnama.Location = new System.Drawing.Point(167, 20);
+            this.lbnama.Name = "lbnama";
+            this.lbnama.Size = new System.Drawing.Size(0, 23);
+            this.lbnama.TabIndex = 1;
+            // 
             // lblname
             // 
             this.lblname.AutoSize = true;
@@ -96,6 +118,7 @@
             this.txsubtotal.Name = "txsubtotal";
             this.txsubtotal.Size = new System.Drawing.Size(208, 30);
             this.txsubtotal.TabIndex = 45;
+            this.txsubtotal.TextChanged += new System.EventHandler(this.txsubtotal_TextChanged);
             // 
             // txname
             // 
@@ -104,6 +127,7 @@
             this.txname.Name = "txname";
             this.txname.Size = new System.Drawing.Size(208, 30);
             this.txname.TabIndex = 43;
+            this.txname.TextChanged += new System.EventHandler(this.txname_TextChanged);
             // 
             // btcari
             // 
@@ -173,7 +197,7 @@
             // 
             // btco
             // 
-            this.btco.Location = new System.Drawing.Point(498, 591);
+            this.btco.Location = new System.Drawing.Point(498, 637);
             this.btco.Name = "btco";
             this.btco.Size = new System.Drawing.Size(326, 69);
             this.btco.TabIndex = 31;
@@ -214,7 +238,7 @@
             // dgitem
             // 
             this.dgitem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgitem.Location = new System.Drawing.Point(55, 83);
+            this.dgitem.Location = new System.Drawing.Point(83, 64);
             this.dgitem.Name = "dgitem";
             this.dgitem.RowHeadersWidth = 51;
             this.dgitem.RowTemplate.Height = 24;
@@ -229,6 +253,7 @@
             this.txprice.Name = "txprice";
             this.txprice.Size = new System.Drawing.Size(208, 30);
             this.txprice.TabIndex = 46;
+            this.txprice.TextChanged += new System.EventHandler(this.txprice_TextChanged);
             // 
             // txcatid
             // 
@@ -272,71 +297,6 @@
             this.dgtransaksi.TabIndex = 50;
             this.dgtransaksi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtransaksi_CellContentClick_1);
             // 
-            // btsubmit
-            // 
-            this.btsubmit.Location = new System.Drawing.Point(209, 739);
-            this.btsubmit.Name = "btsubmit";
-            this.btsubmit.Size = new System.Drawing.Size(246, 76);
-            this.btsubmit.TabIndex = 51;
-            this.btsubmit.Text = "Submit";
-            this.btsubmit.UseVisualStyleBackColor = true;
-            this.btsubmit.Click += new System.EventHandler(this.btsubmit_Click);
-            // 
-            // txuangcst
-            // 
-            this.txuangcst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txuangcst.Location = new System.Drawing.Point(606, 444);
-            this.txuangcst.Name = "txuangcst";
-            this.txuangcst.Size = new System.Drawing.Size(218, 30);
-            this.txuangcst.TabIndex = 52;
-            // 
-            // txkembalian
-            // 
-            this.txkembalian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txkembalian.Location = new System.Drawing.Point(606, 536);
-            this.txkembalian.Name = "txkembalian";
-            this.txkembalian.Size = new System.Drawing.Size(218, 30);
-            this.txkembalian.TabIndex = 53;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(601, 416);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 25);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "Dibayar";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(601, 508);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 25);
-            this.label8.TabIndex = 55;
-            this.label8.Text = "Kembalian";
-            // 
-            // lbnama
-            // 
-            this.lbnama.AutoSize = true;
-            this.lbnama.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbnama.Location = new System.Drawing.Point(167, 20);
-            this.lbnama.Name = "lbnama";
-            this.lbnama.Size = new System.Drawing.Size(0, 23);
-            this.lbnama.TabIndex = 1;
-            // 
-            // lbtanggal
-            // 
-            this.lbtanggal.AutoSize = true;
-            this.lbtanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbtanggal.Location = new System.Drawing.Point(829, 18);
-            this.lbtanggal.Name = "lbtanggal";
-            this.lbtanggal.Size = new System.Drawing.Size(84, 25);
-            this.lbtanggal.TabIndex = 56;
-            this.lbtanggal.Text = "Tanggal";
-            // 
             // productID
             // 
             this.productID.HeaderText = "Product ID";
@@ -365,9 +325,55 @@
             this.Totalprice.Name = "Totalprice";
             this.Totalprice.Width = 125;
             // 
+            // btsubmit
+            // 
+            this.btsubmit.Location = new System.Drawing.Point(296, 730);
+            this.btsubmit.Name = "btsubmit";
+            this.btsubmit.Size = new System.Drawing.Size(246, 76);
+            this.btsubmit.TabIndex = 51;
+            this.btsubmit.Text = "Submit";
+            this.btsubmit.UseVisualStyleBackColor = true;
+            this.btsubmit.Click += new System.EventHandler(this.btsubmit_Click);
+            // 
+            // txuangcst
+            // 
+            this.txuangcst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txuangcst.Location = new System.Drawing.Point(606, 444);
+            this.txuangcst.Name = "txuangcst";
+            this.txuangcst.Size = new System.Drawing.Size(218, 30);
+            this.txuangcst.TabIndex = 52;
+            // 
+            // txkembalian
+            // 
+            this.txkembalian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txkembalian.Location = new System.Drawing.Point(606, 522);
+            this.txkembalian.Name = "txkembalian";
+            this.txkembalian.Size = new System.Drawing.Size(218, 30);
+            this.txkembalian.TabIndex = 53;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(601, 416);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 25);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Dibayar";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(601, 494);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 25);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Kembalian";
+            // 
             // btprint
             // 
-            this.btprint.Location = new System.Drawing.Point(543, 739);
+            this.btprint.Location = new System.Drawing.Point(578, 730);
             this.btprint.Name = "btprint";
             this.btprint.Size = new System.Drawing.Size(246, 76);
             this.btprint.TabIndex = 56;
@@ -375,11 +381,41 @@
             this.btprint.UseVisualStyleBackColor = true;
             this.btprint.Click += new System.EventHandler(this.btprint_Click);
             // 
+            // bttambah
+            // 
+            this.bttambah.Location = new System.Drawing.Point(31, 730);
+            this.bttambah.Name = "bttambah";
+            this.bttambah.Size = new System.Drawing.Size(246, 76);
+            this.bttambah.TabIndex = 57;
+            this.bttambah.Text = "Tambah Produk";
+            this.bttambah.UseVisualStyleBackColor = true;
+            this.bttambah.Click += new System.EventHandler(this.bttambah_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(601, 573);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(115, 25);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "Grand Total";
+            // 
+            // txgrandtotal
+            // 
+            this.txgrandtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txgrandtotal.Location = new System.Drawing.Point(606, 601);
+            this.txgrandtotal.Name = "txgrandtotal";
+            this.txgrandtotal.Size = new System.Drawing.Size(218, 30);
+            this.txgrandtotal.TabIndex = 58;
+            // 
             // CashierPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1532, 902);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txgrandtotal);
             this.Controls.Add(this.btprint);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -406,6 +442,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgitem);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.bttambah);
             this.Name = "CashierPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CashierPage";
@@ -456,5 +493,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Totalprice;
         private System.Windows.Forms.Button btprint;
+        private System.Windows.Forms.Button bttambah;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txgrandtotal;
     }
 }

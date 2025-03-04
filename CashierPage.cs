@@ -78,12 +78,19 @@ namespace MyMakan
                 txstock.Clear();
             }
         }
+        List<Tuple<string, decimal, int, decimal>> daftarProduk = new List<Tuple<string, decimal, int, decimal>>();
 
         private void nujumlah_ValueChanged(object sender, EventArgs e)
         {
             decimal jumlah = Convert.ToDecimal(nujumlah.Value);
             decimal subtotal = jumlah * Convert.ToDecimal(txprice.Text);
-            txsubtotal.Text = subtotal.ToString();
+            txsubtotal.Text = subtotal.ToString("N2");
+        }
+
+        private void HitungGrandTotal()
+        {
+            decimal grandTotal = daftarProduk.Sum(item => item.Item4); // Total semua subtotal produk
+            txgrandtotal.Text = grandTotal.ToString("N2");
         }
 
         private void btsubmit_Click(object sender, EventArgs e)
@@ -101,19 +108,19 @@ namespace MyMakan
         {
             try
             {
-                // Ambil nilai total belanja dan uang customer dari TextBox
-                decimal totalBelanja = Convert.ToDecimal(txsubtotal.Text);
+                // Ambil nilai Grand Total dan uang customer dari TextBox
+                decimal grandTotal = Convert.ToDecimal(txgrandtotal.Text); // Semua produk dalam transaksi
                 decimal uangCustomer = Convert.ToDecimal(txuangcst.Text);
 
                 // Pastikan uang customer cukup untuk membayar
-                if (uangCustomer < totalBelanja)
+                if (uangCustomer < grandTotal)
                 {
                     MessageBox.Show("Uang yang diberikan tidak cukup!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 // Hitung kembalian
-                decimal kembalian = uangCustomer - totalBelanja;
+                decimal kembalian = uangCustomer - grandTotal;
 
                 // Tampilkan hasil di TextBox atau Label
                 txkembalian.Text = kembalian.ToString("N2"); // Format angka desimal 2 digit
@@ -128,50 +135,118 @@ namespace MyMakan
         {
 
         }
-
         private void btprint_Click(object sender, EventArgs e)
         {
             try
             {
-                // Pastikan input sudah diisi
-                if (string.IsNullOrWhiteSpace(txname.Text) ||
-                    string.IsNullOrWhiteSpace(txsubtotal.Text) ||
-                    string.IsNullOrWhiteSpace(txuangcst.Text) ||
-                    string.IsNullOrWhiteSpace(txkembalian.Text))
+                if (daftarStruk.Count == 0)
                 {
-                    MessageBox.Show("Silakan hitung kembalian terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tambahkan minimal satu produk sebelum mencetak struk!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Ambil data transaksi
+                if (string.IsNullOrWhiteSpace(txgrandtotal.Text) || string.IsNullOrWhiteSpace(txuangcst.Text))
+                {
+                    MessageBox.Show("Harap masukkan total belanja dan uang customer!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                decimal totalBelanja = Convert.ToDecimal(txgrandtotal.Text); // Ambil Grand Total dari semua produk
+                decimal uangCustomer = Convert.ToDecimal(txuangcst.Text);
+                decimal kembalian = uangCustomer - totalBelanja;
                 string tanggal = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string namaBarang = txname.Text;
-                string totalBelanja = txsubtotal.Text;
-                string uangCustomer = txuangcst.Text;
 
-                string kembalian = txkembalian.Text;
+                // Format struk
+                string struk = "======== STRUK TRANSAKSI ========\n";
+                struk += $"Tanggal    : {tanggal}\n";
+                struk += "---------------------------------\n";
+                struk += "Produk          Qty   Harga   Subtotal\n";
+                struk += "---------------------------------\n";
 
-                // Format struk transaksi
-                string struk = $"======== STRUK TRANSAKSI ========\n" +
-                               $"Tanggal        : {tanggal}\n" +
-                               $"Nama Produk    : {namaBarang}\n"+
-                               $"Total          : Rp {totalBelanja}\n" +
-                               $"Uang           : Rp {uangCustomer}\n" +
-                               $"Kembalian      : Rp {kembalian}\n" +
-                               $"=================================\n" +
-                               $"Terima kasih telah berbelanja!";
+                // Tambahkan semua produk yang ada dalam daftar
+                foreach (var item in daftarStruk)
+                {
+                    struk += item + "\n";
+                }
 
-                // Dialog untuk menyimpan file
+                // Tambahkan total, uang customer, dan kembalian
+                struk += "---------------------------------\n";
+                struk += $"Grand Total : Rp {totalBelanja:N2}\n";
+                struk += $"Uang        : Rp {uangCustomer:N2}\n";
+                struk += $"Kembalian   : Rp {kembalian:N2}\n";
+                struk += "=================================\n";
+                struk += "Terima kasih telah berbelanja!\n";
+
+                // Simpan struk ke file .txt
                 SaveFileDialog saveFile = new SaveFileDialog();
                 saveFile.Filter = "Text Files (*.txt)|*.txt";
                 saveFile.FileName = "Struk_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
 
                 if (saveFile.ShowDialog() == DialogResult.OK)
                 {
-                    // Simpan struk ke file .txt
                     File.WriteAllText(saveFile.FileName, struk);
                     MessageBox.Show("Struk berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                // Reset daftar produk dan input setelah transaksi
+                daftarStruk.Clear();
+                daftarProduk.Clear(); // Tambahkan ini agar daftarProduk juga kosong setelah transaksi
+                txgrandtotal.Clear();
+                txuangcst.Clear();
+                txkembalian.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txsubtotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txprice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private List<string> daftarStruk = new List<string>();
+        private void bttambah_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txname.Text) || string.IsNullOrWhiteSpace(txprice.Text))
+                {
+                    MessageBox.Show("Harap masukkan nama produk dan harga!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string namaProduk = txname.Text;
+                decimal hargaProduk = Convert.ToDecimal(txprice.Text);
+                int jumlahProduk = Convert.ToInt32(nujumlah.Value);
+                decimal subtotal = Convert.ToDecimal(txsubtotal.Text);
+
+                // Tambahkan produk ke daftarProduk
+                daftarProduk.Add(Tuple.Create(namaProduk, hargaProduk, jumlahProduk, subtotal));
+
+                // Tambahkan produk ke daftarStruk (agar bisa diproses saat print)
+                daftarStruk.Add($"{namaProduk.PadRight(12)} {jumlahProduk}  Rp{hargaProduk:N2}  Rp{subtotal:N2}");
+
+                // Update Grand Total setiap kali ada produk baru
+                HitungGrandTotal();
+
+                // Bersihkan input setelah menambahkan produk
+                txname.Clear();
+                txprice.Clear();
+                txsubtotal.Clear();
+                nujumlah.Value = 1;
+
+                MessageBox.Show("Produk berhasil ditambahkan!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

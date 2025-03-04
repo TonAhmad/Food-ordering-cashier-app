@@ -52,8 +52,8 @@ namespace MyMakan
                 }
                 else if (roleFromDB == "cashier")
                 {
-                    //CashierPage cashierPage = new CashierPage(fullname);
-                    //cashierPage.Show();
+                    CashierPage cashierPage = new CashierPage(fullname);
+                    cashierPage.Show();
                 }
 
                 this.Hide();
