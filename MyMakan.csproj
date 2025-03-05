@@ -54,6 +54,7 @@
       <DependentUpon>AtminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Barang.cs" />
+    <Compile Include="session.cs" />
     <Compile Include="TransDetail.cs" />
     <Compile Include="CashierPage.cs">
       <SubType>Form</SubType>
@@ -62,7 +63,6 @@
       <DependentUpon>CashierPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
-    <Compile Include="GlobalVariable.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAtmin.cs">
       <SubType>Form</SubType>

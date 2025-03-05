@@ -12,17 +12,17 @@ namespace MyMakan
 {
     class TransHeader
     {
-        public int transID;
+        public string transID;
         public string admin_id;
         public decimal total;
 
         Koneksi koneksi = new Koneksi();
-        public void create()
+        public void Create()
         {
             try
             {
                 koneksi.bukaKoneksi();
-                string query = "INSERT INTO Transaction.TransHeader VALUES (@kode, @admin, @total)";
+                string query = "INSERT INTO Transactions.TransHeader (transID, admin_ID, total)VALUES (@kode, @admin, @total)";
                 SqlCommand com = new SqlCommand(query, koneksi.con);
                 com.Parameters.AddWithValue("@kode", transID);
                 com.Parameters.AddWithValue("@admin", admin_id);
@@ -59,7 +59,7 @@ namespace MyMakan
             menit = Convert.ToInt32(DateTime.Now.Minute.ToString());
             detik = Convert.ToInt32(DateTime.Now.Second.ToString());
             int hasil = (tanggal + bulan + tahun) * (jam + menit + detik);
-            no = GlobalVariable.kodeadmin + hasil.ToString() + random.Next(100, 999);
+            no = session.kodeAdmin.Substring(2) + hasil.ToString() + random.Next(100, 999);
             return no;
         }
 

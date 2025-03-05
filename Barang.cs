@@ -106,12 +106,27 @@ namespace MyMakan
 
         public void Update()
         {
-            if (!ValidateForm())
-            {
-                return;
-            }
             try
             {
+                // Validasi input sebelum eksekusi query
+                if (string.IsNullOrWhiteSpace(productName))
+                {
+                    MessageBox.Show("Nama produk tidak boleh kosong!", "Validasi Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (price <= 0)
+                {
+                    MessageBox.Show("Harga harus lebih dari 0!", "Validasi Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (stock < 0)
+                {
+                    MessageBox.Show("Stok tidak boleh negatif!", "Validasi Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 koneksi.bukaKoneksi();
                 string query = "UPDATE item.Product SET productName = @name, categoryID = @category, price = @price, stock = @stock WHERE productID = @id";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
@@ -120,6 +135,7 @@ namespace MyMakan
                 cmd.Parameters.AddWithValue("@category", categoryID);
                 cmd.Parameters.AddWithValue("@price", price);
                 cmd.Parameters.AddWithValue("@stock", stock);
+
                 int i = cmd.ExecuteNonQuery();
                 if (i > 0)
                 {
@@ -127,18 +143,23 @@ namespace MyMakan
                 }
                 else
                 {
-                    MessageBox.Show("Gagal mengubah produk!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Gagal mengubah produk! Produk mungkin tidak ditemukan.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException ex)
             {
                 MessageBox.Show("Kesalahan Database: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally
             {
                 koneksi.tutupKoneksi();
             }
         }
+
 
         public void Delete()
         {

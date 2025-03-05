@@ -135,8 +135,8 @@ namespace MyMakan
                 return;
             }
             barang.Update();
-            LoadProduct();
             ClearProduct();
+            LoadProduct();
         }
 
         private void dgitem_CellContentClick(object sender, DataGridViewCellEventArgs e)

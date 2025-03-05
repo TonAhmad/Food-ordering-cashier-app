@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace MyMakan
 {
@@ -27,16 +28,17 @@ namespace MyMakan
             }
         }
 
-        public bool Authenticate(string username, string password, string selectedRole, out string roleFromDB, out string fullname)
+        public bool Authenticate(string username, string password, string selectedRole, out string roleFromDB, out string fullname, out string kodeadmin)
         {
             roleFromDB = null;
             fullname = null;
+            kodeadmin = null; // Menyimpan adminID yang sesuai
 
             try
             {
                 koneksi.bukaKoneksi();
 
-                string query = "SELECT password_hash, role, username FROM Adm.Admin WHERE username = @username";
+                string query = "SELECT admin_id, password_hash, role, username FROM Adm.Admin WHERE username = @username";
                 SqlCommand cmd = new SqlCommand(query, koneksi.con);
                 cmd.Parameters.AddWithValue("@username", username);
 
@@ -44,6 +46,7 @@ namespace MyMakan
 
                 if (reader.Read())
                 {
+                    kodeadmin = reader["admin_id"].ToString(); // Ambil adminID
                     string storedHash = reader["password_hash"].ToString();
                     roleFromDB = reader["role"].ToString().ToLower();
                     fullname = reader["username"].ToString();
@@ -57,6 +60,8 @@ namespace MyMakan
                     string hashedInput = HashPassword(password);
                     if (hashedInput == storedHash)
                     {
+                        // Simpan adminID ke dalam session
+                        session.kodeAdmin = kodeadmin;
                         return true;
                     }
                 }

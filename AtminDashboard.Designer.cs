@@ -59,7 +59,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.IndianRed;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(78)))));
             this.panel1.Controls.Add(this.lblname);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -70,17 +70,17 @@
             // lblname
             // 
             this.lblname.AutoSize = true;
-            this.lblname.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblname.Font = new System.Drawing.Font("Bookman Old Style", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblname.Location = new System.Drawing.Point(12, 15);
             this.lblname.Name = "lblname";
-            this.lblname.Size = new System.Drawing.Size(142, 24);
+            this.lblname.Size = new System.Drawing.Size(166, 28);
             this.lblname.TabIndex = 0;
             this.lblname.Text = "Admin Name";
             // 
             // dgitem
             // 
             this.dgitem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgitem.Location = new System.Drawing.Point(121, 58);
+            this.dgitem.Location = new System.Drawing.Point(155, 88);
             this.dgitem.Name = "dgitem";
             this.dgitem.RowHeadersWidth = 51;
             this.dgitem.RowTemplate.Height = 24;
@@ -90,7 +90,7 @@
             // 
             // btsubmit
             // 
-            this.btsubmit.Location = new System.Drawing.Point(27, 646);
+            this.btsubmit.Location = new System.Drawing.Point(61, 676);
             this.btsubmit.Name = "btsubmit";
             this.btsubmit.Size = new System.Drawing.Size(127, 41);
             this.btsubmit.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             // btupdate
             // 
-            this.btupdate.Location = new System.Drawing.Point(160, 646);
+            this.btupdate.Location = new System.Drawing.Point(194, 676);
             this.btupdate.Name = "btupdate";
             this.btupdate.Size = new System.Drawing.Size(127, 41);
             this.btupdate.TabIndex = 3;
@@ -110,7 +110,7 @@
             // 
             // btdelete
             // 
-            this.btdelete.Location = new System.Drawing.Point(293, 646);
+            this.btdelete.Location = new System.Drawing.Point(327, 676);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(127, 41);
             this.btdelete.TabIndex = 4;
@@ -121,7 +121,7 @@
             // dgcategory
             // 
             this.dgcategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgcategory.Location = new System.Drawing.Point(498, 402);
+            this.dgcategory.Location = new System.Drawing.Point(532, 432);
             this.dgcategory.Name = "dgcategory";
             this.dgcategory.RowHeadersWidth = 51;
             this.dgcategory.RowTemplate.Height = 24;
@@ -131,7 +131,7 @@
             // 
             // btcategory
             // 
-            this.btcategory.Location = new System.Drawing.Point(584, 646);
+            this.btcategory.Location = new System.Drawing.Point(618, 676);
             this.btcategory.Name = "btcategory";
             this.btcategory.Size = new System.Drawing.Size(127, 41);
             this.btcategory.TabIndex = 6;
@@ -142,7 +142,7 @@
             // txcategory
             // 
             this.txcategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txcategory.Location = new System.Drawing.Point(584, 610);
+            this.txcategory.Location = new System.Drawing.Point(618, 640);
             this.txcategory.Name = "txcategory";
             this.txcategory.Size = new System.Drawing.Size(182, 30);
             this.txcategory.TabIndex = 7;
@@ -150,7 +150,7 @@
             // txPname
             // 
             this.txPname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txPname.Location = new System.Drawing.Point(189, 402);
+            this.txPname.Location = new System.Drawing.Point(223, 432);
             this.txPname.Name = "txPname";
             this.txPname.Size = new System.Drawing.Size(189, 30);
             this.txPname.TabIndex = 8;
@@ -160,7 +160,7 @@
             // 
             this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(189, 448);
+            this.comboBoxCategory.Location = new System.Drawing.Point(223, 478);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(189, 33);
             this.comboBoxCategory.TabIndex = 12;
@@ -170,7 +170,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 402);
+            this.label1.Location = new System.Drawing.Point(56, 432);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 25);
             this.label1.TabIndex = 13;
@@ -180,7 +180,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 448);
+            this.label2.Location = new System.Drawing.Point(56, 478);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 25);
             this.label2.TabIndex = 14;
@@ -190,7 +190,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 496);
+            this.label3.Location = new System.Drawing.Point(56, 526);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 25);
             this.label3.TabIndex = 15;
@@ -200,7 +200,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 555);
+            this.label4.Location = new System.Drawing.Point(56, 585);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 25);
             this.label4.TabIndex = 16;
@@ -210,7 +210,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(476, 610);
+            this.label5.Location = new System.Drawing.Point(510, 640);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 25);
             this.label5.TabIndex = 17;
@@ -219,7 +219,7 @@
             // nuprice
             // 
             this.nuprice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nuprice.Location = new System.Drawing.Point(189, 496);
+            this.nuprice.Location = new System.Drawing.Point(223, 526);
             this.nuprice.Maximum = new decimal(new int[] {
             1215752191,
             23,
@@ -232,7 +232,7 @@
             // nustock
             // 
             this.nustock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nustock.Location = new System.Drawing.Point(189, 555);
+            this.nustock.Location = new System.Drawing.Point(223, 585);
             this.nustock.Maximum = new decimal(new int[] {
             -1530494977,
             232830,
@@ -245,7 +245,7 @@
             // txProdID
             // 
             this.txProdID.Enabled = false;
-            this.txProdID.Location = new System.Drawing.Point(353, 184);
+            this.txProdID.Location = new System.Drawing.Point(387, 214);
             this.txProdID.Name = "txProdID";
             this.txProdID.Size = new System.Drawing.Size(100, 22);
             this.txProdID.TabIndex = 20;
@@ -253,7 +253,7 @@
             // 
             // btupcat
             // 
-            this.btupcat.Location = new System.Drawing.Point(717, 646);
+            this.btupcat.Location = new System.Drawing.Point(751, 676);
             this.btupcat.Name = "btupcat";
             this.btupcat.Size = new System.Drawing.Size(127, 41);
             this.btupcat.TabIndex = 21;
@@ -263,7 +263,7 @@
             // 
             // btdelcat
             // 
-            this.btdelcat.Location = new System.Drawing.Point(850, 646);
+            this.btdelcat.Location = new System.Drawing.Point(884, 676);
             this.btdelcat.Name = "btdelcat";
             this.btdelcat.Size = new System.Drawing.Size(127, 41);
             this.btdelcat.TabIndex = 22;
@@ -274,7 +274,7 @@
             // txcatid
             // 
             this.txcatid.Enabled = false;
-            this.txcatid.Location = new System.Drawing.Point(893, 406);
+            this.txcatid.Location = new System.Drawing.Point(927, 436);
             this.txcatid.Name = "txcatid";
             this.txcatid.Size = new System.Drawing.Size(100, 22);
             this.txcatid.TabIndex = 23;
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 708);
+            this.ClientSize = new System.Drawing.Size(1141, 791);
             this.Controls.Add(this.btdelcat);
             this.Controls.Add(this.btupcat);
             this.Controls.Add(this.nustock);

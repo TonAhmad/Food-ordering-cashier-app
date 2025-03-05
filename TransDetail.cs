@@ -22,7 +22,7 @@ namespace MyMakan
             try
             {
                 koneksi.bukaKoneksi();
-                string query = "INSERT INTO Transaction.TransDetail VALUES (@transID, @productID, @quantity, @subtotal)";
+                string query = "INSERT INTO Transactions.TransDetail (transID, productID, quantity, subtotal) VALUES (@transID, @productID, @quantity, @subtotal)";
                 SqlCommand com = new SqlCommand(query, koneksi.con);
                 com.Parameters.AddWithValue("@transID", transID);
                 com.Parameters.AddWithValue("@productID", productID);

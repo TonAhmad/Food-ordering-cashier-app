@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace MyMakan
 {
@@ -32,6 +33,7 @@ namespace MyMakan
             Login login = new Login();
             string roleFromDB;
             string fullname;
+            string kodeadmin; // Variabel untuk adminID
 
             if (comboBoxRole.SelectedItem == null)
             {
@@ -41,9 +43,13 @@ namespace MyMakan
 
             string selectedRole = comboBoxRole.SelectedItem.ToString().ToLower();
 
-            if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB, out fullname))
+            // Authenticate user & ambil adminID
+            if (login.Authenticate(txtUsername.Text, txtPassword.Text, selectedRole, out roleFromDB, out fullname, out kodeadmin))
             {
                 MessageBox.Show("Login berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Simpan adminID ke global session
+                session.kodeAdmin = kodeadmin;
 
                 if (roleFromDB == "admin")
                 {

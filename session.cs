@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyMakan
 {
-    internal class GlobalVariable
+    internal static class session
     {
-        public static string kodeadmin;
+        public static string kodeAdmin { get; set; }
     }
 }
